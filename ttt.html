@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <title>Tic-Tac-Toe | Play</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link type="text/css" rel="stylesheet" href="css/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <style>
+            body,h1 {
+              font-family: "Raleway", sans-serif;
+              background-color: #00ace6/*#33cccc*/;
+            }
+            body, html {
+              height: 100%;
+            }
+            a{
+                text-decoration: none;
+                margin: 30px;
+                border: 1px solid #FFF;
+                padding: 10px;
+                background-color: #0086b3;
+            }
+            a:hover{
+                color: #29a3a3;
+                background-color: #cce6ff;
+                cursor: pointer;
+            }
+            .wrapper{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #boardContainer{
+                flex: 1;
+                position: relative;
+                max-width: 600px;
+                max-height: 600px;
+                margin-bottom: 40px;
+            }
+            #scoreBoard{
+                flex: 1;
+                max-width: 400px;
+                margin-top: 20px;
+            }
+            #board{
+                position: relative;
+                top: 5%;
+                left: 0%;
+            }
+            .row{
+                height: 125px;
+                border-bottom: 3px solid #fff;
+                display: flex;
+            }
+            div.row:nth-of-type(3){
+                border: 0px;
+            }
+            .col{
+                flex: 1;
+                width: 100px;
+                border-right: 3px solid #fff;
+                font-size: 70px;
+                text-align: center;
+            }
+            div.col:nth-of-type(3){
+                border: 0px;
+            }
+            .playerScore{
+                margin-bottom: 40px;
+                padding: 8px 16px 16px 16px;
+                width: 300px;
+                height: 100px;
+            }
+            .playerScore:hover{
+                color: #29a3a3;
+                background-color: #cce6ff;
+            }
+            .playerScore span{
+                font-size: 25px;
+            }
+            #playerScore span, #botScore span{
+                margin-left: 30px;
+            }
+            .pop-down{
+                display: none;
+            }
+            .pop-up{
+               padding: 20px;
+               display: block;
+               max-width: 90%;
+               margin-left: 5%;
+               margin-bottom: 20px;
+           }
+           .about-link-close{
+               float: right;
+           }
+           .about-link-close::after{
+               clear: left;
+           }
+           #board .winner{
+               font-size: 30px;
+           }
+           @media screen and (max-width: 400px){
+                .pop-up{
+                    padding: 20px;
+                    display: block;
+                    max-width: 300px;
+                    margin-left: 20px;
+                    margin-bottom: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body  class="w3-animate-opacity w3-text-white">
+        <h1 class="w3-jumbo w3-animate-top w3-center">Tic-Tac-Toe</h1>
+        <div class="nav">
+            <a class="w3-card-4 link" href="index.html">Home</a>
+            <a class="w3-card-4 link" id="about-link" href="#about">About</a>
+            <a class="w3-card-4 link" id="reset-link" href="#">Reset Game</a>
+        </div>
+        <div class="w3-container wrapper">
+            <div class="w3-container" id="scoreBoard">
+                <h2>Leaderboard</h2>
+                <div class="playerScore w3-card-4">
+                    <h3 id="playerName">PlayerName</h3>
+                    <div id="playerScore">0</div>
+                </div>
+                <div class="playerScore w3-card-4">
+                    <h3 id="botName">Intelli Bot</h3>
+                    <div id="botScore"><span>0</span></div>
+                </div>
+            </div>
+            <div id="boardContainer" class="w3-container">
+                <span class="w3-center" id="message"></span>
+                <div id="board" class="w3-center w3-card-4">
+                    <!-- dynamic population-->
+                </div>
+            </div>
+        </div>
+        <div class="pop-down w3-animate-bottom" id="about">
+            <a class="link about-link-close">&times;</a>
+            <h3>About Tic-Tac-Toe</h3>
+            <h4>Background</h4>
+            <p>Tic-tac-toe (also known as noughts and crosses or Xs and Os)
+            is a paper-and-pencil game for two players, X and O,<br/>
+            who take turns marking the spaces in a 3×3 grid.<br/>
+            The player who succeeds in placing three of their marks<br/>
+            in a horizontal, vertical, or diagonal row wins the game.
+            </p>
+            <h4>Motivation</h4>
+            <p>
+                Hi, I am Keoagile Dinake. I decided to develop my own Tic-Tac-Toe<br/>
+                playing AI. I utilized Alpha-Beta Pruning game trees to achieve this.<br/>
+                Expect more from me in the near future.
+            </p>
+        </div>
+        <script type="text/javascript">
+            function showMsg(){
+                aboutBrd.className = "pop-up w3-card-4 w3-center w3-animate-bottom";
+            }
+            function hideMsg() {
+                aboutBrd.className = "pop-down";
+            }
+            var aboutBrd = document.querySelector('.pop-down');
+            var about_link = document.querySelector('#about-link');
+            var about_link_close = document.querySelector('.about-link-close');
+            about_link.addEventListener('click', showMsg);
+            about_link_close.addEventListener('click', hideMsg);
+        </script>
+        <script type="text/javascript" src="script/ttt.js"></script>
+    </body>
+</html>
